@@ -1,0 +1,29 @@
+# Multilingual RAG System
+
+This project implements a Retrieval-Augmented Generation (RAG) system for processing queries in English and Bangla, based on a PDF knowledge base (HSC26 Bangla 1st paper). The system extracts text, chunks it, stores embeddings in a FAISS vector database, retrieves relevant chunks, and generates answers using OpenAI's `gpt-3.5-turbo`. It includes a REST API built with FastAPI and maintains long-term (vector DB) and short-term (chat history) memory.
+
+## Features
+- **Multilingual Support**: Handles queries in English and Bangla.
+- **PDF Processing**: Extracts and cleans text from PDFs using PyMuPDF.
+- **Chunking**: Character-based chunking with overlap for semantic coherence.
+- **Embedding**: Uses `paraphrase-multilingual-MiniLM-L12-v2` for multilingual embeddings.
+- **Vector DB**: Stores embeddings in FAISS for efficient retrieval.
+- **Answer Generation**: Generates grounded answers using OpenAI.
+- **API**: FastAPI-based REST API with endpoints `/ask` and `/history`.
+- **Memory**:
+  - Long-term: FAISS vector database.
+  - Short-term: SQLite-based chat history.
+- **Evaluation**: Cosine similarity for retrieval, manual validation for groundedness.
+
+## Setup Guide
+
+### Prerequisites
+- Python 3.10+
+- OpenAI API key (set in `.env`)
+- PDF file (e.g., `hsc26_bangla_1st_paper.pdf`)
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/multilingual-rag.git
+   cd multilingual-rag
